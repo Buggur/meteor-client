@@ -12,6 +12,7 @@ import meteordevelopment.meteorclient.gui.tabs.WindowTabScreen;
 import meteordevelopment.meteorclient.settings.Settings;
 import meteordevelopment.meteorclient.systems.config.Config;
 import meteordevelopment.meteorclient.utils.misc.NbtUtils;
+import meteordevelopment.meteorclient.utils.player.ChatUtils;
 import meteordevelopment.meteorclient.utils.render.prompts.YesNoPrompt;
 import net.minecraft.client.gui.screen.Screen;
 
@@ -40,6 +41,7 @@ public class ConfigTab extends Tab {
             settings.onActivated();
 
             onClosed(() -> {
+                ChatUtils.changePrefixColor(Config.get().chatFeedbackPrefixColor.get().getPacked());
                 String prefix = Config.get().prefix.get();
 
                 if (prefix.isBlank()) {
